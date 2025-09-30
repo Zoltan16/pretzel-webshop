@@ -51,24 +51,7 @@ Ez a projekt a HTML, CSS és Bootstrap technológiákat használja, és csapatba
 
 5. A JavaScript fájlok a js mappában találhatók (main.js).
 
-
-## 📂 Alap projekt struktúra
-Pretzel-Webshop/
-│
-├─ index.html
-├─ login.html
-├─ css/
-│   └─ custom.css
-├─ js/
-│   └─ main.js
-├─ assets/
-│   └─ img/
-│       ├─ sample1.jpg
-│       ├─ sample2.jpg
-│       ├─ sample3.jpg
-│       └─ sample_special.jpg
-└─ README.md
-
+---
 
 ## 📌 Jövőbeli bővítések
 
