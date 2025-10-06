@@ -1,138 +1,98 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pretzel Webshop</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/custom.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pretzel's Pretzels - Kezdőlap</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/custom.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-
-<!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
-    <div class="container">
-        <a class="navbar-brand" href="index.html">
-            <i class="fa-solid fa-house"></i>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link active" href="index.html">Kezdőlap</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Ételek</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Merch</a></li>
-                <li class="nav-item"><a class="nav-link" href="login.html">Bejelentkezés / Regisztráció</a></li>
-                <li class="nav-item"><a class="nav-link" href="gaming.html">Gaming</a></li> <!-- Új menüpont -->
-            </ul>
-            <a class="btn btn-outline-dark" href="#">
-                <i class="fa-solid fa-cart-shopping"></i> Kosár
-            </a>
-        </div>
+  <div class="container">
+    <a class="navbar-brand" href="index.html" title="Főoldal"><i class="fa-solid fa-house"></i></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link active" href="index.html">Kezdőlap</a></li>
+        <li class="nav-item"><a class="nav-link" href="shop-food.html">Ételek</a></li>
+        <li class="nav-item"><a class="nav-link" href="shop-merch.html">Merch</a></li>
+        <li class="nav-item"><a class="nav-link" href="login.html">Bejelentkezés</a></li>
+        <li class="nav-item"><a class="nav-link" href="gaming.html">Gaming</a></li>
+      </ul>
+      <a class="btn btn-outline-dark position-relative" href="cart.html">
+        <i class="fa-solid fa-cart-shopping"></i> Kosár <span id="cart-count" class="badge bg-secondary ms-2">0</span>
+      </a>
     </div>
+  </div>
 </nav>
 
-<!-- Hero Section -->
 <section class="py-5 bg-light">
-    <div class="container text-center">
-        <h1 class="display-5 fw-bold">Üdvözlünk a Pretzel's Pretzels & More oldalán!</h1>
-        <p class="lead">Frissen sült finomságok, édes csemegék és menő merch csak Neked!</p>
-        <a href="#" class="btn btn-primary btn-lg">Vásárolj most</a>
-    </div>
+  <div class="container text-center">
+    <h1 class="display-5 fw-bold">Pretzel's Pretzels</h1>
+    <p class="lead">Frissen sült finomságok, édes és sós csemegék, valamint játékos merch.</p>
+    <a href="shop-food.html" class="btn btn-primary btn-lg">Vásárolj most</a>
+  </div>
 </section>
 
-<!-- Main Content with Sidebar -->
 <section class="py-5">
-    <div class="container">
-        <div class="row">
-            <!-- Sidebar Special Offer Box -->
-            <aside class="col-md-4 mb-4">
-                <div class="card shadow-sm mb-4">
-                    <img src="assets/img/sample_special.jpg" class="card-img-top" alt="Special Offer">
-                    <div class="card-body">
-                        <h5 class="card-title">Különleges Ajánlat</h5>
-                        <p class="card-text">Egyedi perec akció csak ma!</p>
-                        <a href="#" class="btn btn-outline-primary w-100">Megnézem</a>
-                    </div>
-                </div>
-                <div class="card shadow-sm">
-                    <div class="card-body">
-                        <h5 class="card-title">Legnépszerűbb Termékek</h5>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">1. Sós perec</li>
-                            <li class="list-group-item">2. Fahéjas csiga</li>
-                            <li class="list-group-item">3. Muffin mix</li>
-                            <li class="list-group-item">4. Gumicukor válogatás</li>
-                            <li class="list-group-item">5. Epres plüss</li>
-                        </ul>
-                    </div>
-                </div>
-            </aside>
-
-            <!-- Recommended Products -->
-            <div class="col-md-8">
-                <h2 class="mb-4">Akciós Termékek</h2>
-                <div class="row g-4">
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card shadow-sm">
-                            <img src="assets/img/sample1.jpg" class="card-img-top" alt="Product">
-                            <div class="card-body">
-                                <h5 class="card-title">Sós perec</h5>
-                                <p class="card-text">Ropogós, aranybarna és frissen sült.</p>
-                                <a href="#" class="btn btn-outline-primary w-100">Kosárba</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card shadow-sm">
-                            <img src="assets/img/sample2.jpg" class="card-img-top" alt="Product">
-                            <div class="card-body">
-                                <h5 class="card-title">Édes muffin</h5>
-                                <p class="card-text">Puha, édes és ízletes.</p>
-                                <a href="#" class="btn btn-outline-primary w-100">Kosárba</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card shadow-sm">
-                            <img src="assets/img/sample3.jpg" class="card-img-top" alt="Product">
-                            <div class="card-body">
-                                <h5 class="card-title">Gülü eper plüss</h5>
-                                <p class="card-text">Minden rajongó számára szórakoztató merch!</p>
-                                <a href="#" class="btn btn-outline-primary w-100">Kosárba</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+  <div class="container">
+    <div class="row">
+      <aside class="col-md-4 mb-4">
+        <div class="card shadow-sm mb-4">
+          <img src="assets/img/sample_special.jpg" class="card-img-top" alt="Különleges ajánlat">
+          <div class="card-body">
+            <h5 class="card-title">Különleges ajánlat</h5>
+            <p class="card-text">Egyedi perec válogatás, csak ma!</p>
+            <a href="shop-food.html" class="btn btn-outline-primary w-100">Megnézem</a>
+          </div>
         </div>
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Legnépszerűbb termékek</h5>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Sós perec</li>
+              <li class="list-group-item">Fahéjas csiga</li>
+              <li class="list-group-item">Édes muffin</li>
+              <li class="list-group-item">Gumicukor válogatás</li>
+              <li class="list-group-item">Epres plüss</li>
+            </ul>
+          </div>
+        </div>
+      </aside>
+
+      <div class="col-md-8">
+        <h2 class="mb-4">Ajánlatok</h2>
+        <div class="row g-4" id="home-products">
+          <!-- products will be inserted by JS -->
+        </div>
+      </div>
     </div>
+  </div>
 </section>
 
-<!-- About Us -->
 <section class="py-5 bg-light">
-    <div class="container">
-        <h2>Rólunk</h2>
-        <p>
-            A Pretzel's Pretzels & Co.-nál a hagyományos recepteket játékos kreativitással ötvözzük.
-            Webshopunkban sós és édes finomságokat, egyedi merch termékeket és kellemes meglepetéseket találhatsz.
-        </p>
-    </div>
+  <div class="container">
+    <h2>Rólunk</h2>
+    <p>A Pretzel's Pretzels & Co.-nál a hagyományos recepteket játékos kreativitással ötvözzük. Webshopunk egyedi termékeket és élményt kínál.</p>
+  </div>
 </section>
 
-<!-- Footer -->
 <footer class="py-4 bg-dark text-light text-center">
-    <div class="container">
-        <p class="mb-0">&copy; 2025 Pretzel's Pretzels & Co. Minden jog fenntartva.</p>
-    </div>
+  <div class="container">
+    <p class="mb-0">&copy; 2025 Pretzel's Pretzels. Minden jog fenntartva.</p>
+  </div>
 </footer>
 
-<!-- Bootstrap JS -->
+<!-- Toast container -->
+<div id="toast-container" class="toast-container position-fixed top-0 end-0 p-3"></div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/data.js"></script>
+<script src="js/cart.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>
