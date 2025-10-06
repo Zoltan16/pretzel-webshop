@@ -5,7 +5,7 @@
 ![License](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)
 ![Version](https://img.shields.io/badge/Version-1.0.0-green.svg?style=for-the-badge)
 
-![Pretzel Webshop Banner](assets/img/kepneve.jpg)
+![Pretzel Webshop Banner](assets/img/vegso_logo.png)
 
 **Pretzel Webshop** egy modern, reszponzív online áruház, ahol frissen sült finomságokat, édességeket és egyedi merch termékeket kínálunk.  
 Ez a projekt a HTML, CSS és Bootstrap technológiákat használja, és csapatban is fejleszthető.
@@ -31,9 +31,9 @@ Ez a projekt a HTML, CSS és Bootstrap technológiákat használja, és csapatba
 
 ## 👥 Csapat
 - **Fejlesztő 1:** [Nagy Zoltán, https://github.com/Zoltan16]
-- **Fejlesztő 2:** [Név, GitHub link]
-- **Fejlesztő 3:** [Név, GitHub link]
-- **Fejlesztő 4:** [Név, GitHub link]
+- **Fejlesztő 2:** [Labbancz Klaudia, https://github.com/KlaudiaLabb]
+- **Fejlesztő 3:** [Kósa Bálint, https://github.com/KosaBalint03]
+- **Fejlesztő 4:** [Bodó Máté, GitHub link]
 
 *(Ide lehet később hozzáadni a szerepköreinket)*
 
