@@ -1,5 +1,11 @@
 // main.js - UI behaviors (checkout flow, product detail render)
 document.addEventListener('DOMContentLoaded', ()=>{
+
+// Update navbar with user info (if auth.js is loaded)
+  if(typeof authService !== 'undefined'){
+    authService.updateNavbar();
+  }
+
   // render home products (some selection)
   const homeEl = document.getElementById('home-products');
   if(homeEl){
@@ -44,7 +50,16 @@ document.addEventListener('DOMContentLoaded', ()=>{
   if(checkoutForm){
     checkoutForm.addEventListener('submit', (e)=>{
       e.preventDefault();
-      // collect data (this is demo only)
+      // collect data
+
+      let userEmail = '';
+      let userId = null;
+      if(typeof authService !== 'undefined' && authService.isAuthenticated()){
+        userEmail = authService.getUserEmail();
+        const user = authService.getCurrentUser();
+        userId = user.id || null;
+      }
+
       const data = {
         name: document.getElementById('name').value,
         email: document.getElementById('email').value,
