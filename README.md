@@ -33,7 +33,7 @@ Ez a projekt a HTML, CSS és Bootstrap technológiákat használja, és csapatba
 - **Fejlesztő 1:** [Nagy Zoltán, https://github.com/Zoltan16]
 - **Fejlesztő 2:** [Labbancz Klaudia, https://github.com/KlaudiaLabb]
 - **Fejlesztő 3:** [Kósa Bálint, https://github.com/KosaBalint03]
-- **Fejlesztő 4:** [Bodó Máté, GitHub link]
+- **Fejlesztő 4:** [Bodó Máté, https://github.com/bmatehun44]
 
 *(Ide lehet később hozzáadni a szerepköreinket)*
 
