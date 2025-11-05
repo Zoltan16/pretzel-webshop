@@ -11,7 +11,22 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
   <div class="container">
-    <a class="navbar-brand" href="index.html"><i class="fa-solid fa-house"></i></a>
+    <a class="navbar-brand" href="index.html" title="Főoldal"><i class="fa-solid fa-house"></i></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link " href="index.html">Kezdőlap</a></li>
+        <li class="nav-item"><a class="nav-link" href="shop-food.html">Ételek</a></li>
+        <li class="nav-item"><a class="nav-link" href="shop-merch.html">Merch</a></li>
+        <li class="nav-item"><a class="nav-link" href="login.html">Bejelentkezés</a></li>
+        <li class="nav-item"><a class="nav-link" href="gaming.html">Gaming</a></li>
+      </ul>
+      <a class="btn btn-outline-dark position-relative" href="cart.html">
+        <i class="fa-solid fa-cart-shopping"></i> Kosár <span id="cart-count" class="badge bg-secondary ms-2">0</span>
+      </a>
+    </div>
   </div>
 </nav>
 

@@ -78,8 +78,8 @@ function renderProducts(selector, filterFn){
           <h5 class="card-title">${p.name}</h5>
           <p class="card-text">${p.desc}</p>
           <div class="d-flex gap-2">
-            <button class="btn btn-outline-primary w-100" onclick="addToCart('${p.id}',1)">Kosárba — ${p.price} Ft</button>
-            <a href="product.html?id=${p.id}" class="btn btn-light">Részletek</a>
+            <button class="kosarbtn btn btn-outline-primary w-100" onclick="addToCart('${p.id}',1)">Kosárba:<br> ${p.price} Ft</button>
+            <a href="product.html?id=${p.id}" class="btn btn-light kozepre">Részletek</a>
           </div>
         </div>
       </div>

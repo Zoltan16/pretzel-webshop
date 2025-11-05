@@ -8,13 +8,20 @@
 }
 
 body{
-    background: linear-gradient(180deg,var(--bakery-bg) 0%, #fff 100%);
+    background: linear-gradient(180deg,var(--bakery-bg) 0%, #fff5d9 100%);
     color: var(--bakery-text);
     font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
 }
 
 .btn-primary{ background-color: var(--bakery-main); border-color: var(--bakery-main); }
 .btn-outline-primary{ color: var(--bakery-main); border-color: var(--bakery-main); }
+
+
+/*színváltás ha a gomb felé visszük az egeret*/
+.kosarbtn:hover{background-color: #bb9070;}
+.varasoljbtn:hover{background-color: #735a46;}
+
+
 
 .card{ border-radius: 12px; }
 .card-img-top{ height:180px; object-fit:cover; border-top-left-radius:12px; border-top-right-radius:12px; }
@@ -36,4 +43,16 @@ body{
 .badge-cart{
     background: var(--bakery-main);
     color: #fff;
+}
+
+.kozepre{
+    display: flex;
+    align-items: center; /* Függőleges középre igazítás */
+    justify-content: center; /* Vízszintes középre igazítás */
+}
+.szoveg-overlay {
+  position: absolute;
+  left: 50%; /* A tartály bal oldalától 50%-ra */
+  transform: translate(-50%, -50%); /* A szöveget a saját mérete szerint középre igazítja */
+  text-align: center;
 }
