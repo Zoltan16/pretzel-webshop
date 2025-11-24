@@ -20,7 +20,7 @@ public class Product {
 
     public Product() {}
 
-    // Konstruktor, amelyet a DataLoader használ (5 paraméter)
+    // Konstruktor, amelyet a DataLoader használ
     public Product(String name, String type, double price, String imageUrl, String description) {
         this.name = name;
         this.type = type;

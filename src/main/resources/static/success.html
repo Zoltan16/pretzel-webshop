@@ -17,6 +17,29 @@
 
 <main class="py-5 text-center">
   <div class="container">
+      <div id="szerzett_kuponok_resz"></div>
+
+      <script>
+          document.addEventListener('DOMContentLoaded', () => {
+              const SzerzettKuponok = localStorage.getItem('utolso_vasarlas_utanni_szerzett_kuponok');
+              const section = document.getElementById('kupon-szerzett_kuponok_resz');
+
+              if(SzerzettKuponok && parseInt(SzerzettKuponok) > 0 && !authService.isGuest()) {
+                  section.innerHTML = `
+                  <div class="alert alert-success">
+                      <h5><i class="fa-solid fa-gift"></i> Gratulálunk!</h5>
+                      <p>Kaptál <strong>${SzerzettKuponok} kupont</strong>, melyet következő vásárláskor felhasználhatsz!</p>
+                      <p class="mb-0">Új egyenleg: <strong>${authService.getKupons()} kupon</strong></p>
+                  </div>
+                  `;
+
+                  // kuponadat torlese
+                  localStorage.removeItem('utolso_vasarlas_utanni_szerzett_kuponok');
+              }
+          });
+
+
+      </script>
     <div class="p-5 bg-white rounded shadow-sm">
       <h1 class="display-4">Köszönjük a rendelésedet!</h1>
       <p class="lead">Hamarosan felvesszük veled a kapcsolatot.</p>
