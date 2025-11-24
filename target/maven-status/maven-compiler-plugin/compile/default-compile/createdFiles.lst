@@ -1,0 +1,13 @@
+com\pretzel\backend\config\DataLoader.class
+com\pretzel\backend\repository\ProductRepository.class
+com\pretzel\backend\model\User.class
+com\pretzel\backend\PretzelBackendApplication.class
+com\pretzel\backend\controller\OrderController.class
+com\pretzel\backend\config\SecurityConfig.class
+com\pretzel\backend\model\OrderItem.class
+com\pretzel\backend\controller\ProductController.class
+com\pretzel\backend\controller\AuthController.class
+com\pretzel\backend\model\Order.class
+com\pretzel\backend\repository\UserRepository.class
+com\pretzel\backend\repository\OrderRepository.class
+com\pretzel\backend\model\Product.class

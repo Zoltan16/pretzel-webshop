@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fizetés - Pretzel's Pretzels</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/custom.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+  <div class="container">
+    <a class="navbar-brand" href="index.html"><i class="fa-solid fa-house"></i></a>
+  </div>
+</nav>
+
+<main class="py-5">
+  <div class="container">
+    <h1>Fizetés</h1>
+    <form id="checkout-form" class="row g-3">
+      <div class="col-md-6">
+        <label for="name" class="form-label">Név</label>
+        <input type="text" class="form-control" id="name" required>
+      </div>
+      <div class="col-md-6">
+        <label for="email" class="form-label">E-mail</label>
+        <input type="email" class="form-control" id="email" required>
+      </div>
+      <div class="col-12">
+        <label for="address" class="form-label">Szállítási cím</label>
+        <input type="text" class="form-control" id="address" required>
+      </div>
+      <div class="col-md-4">
+        <label for="city" class="form-label">Város</label>
+        <input type="text" class="form-control" id="city" required>
+      </div>
+      <div class="col-md-4">
+        <label for="zip" class="form-label">Irányítószám</label>
+        <input type="text" class="form-control" id="zip" required>
+      </div>
+      <div class="col-md-4">
+        <label for="phone" class="form-label">Telefonszám</label>
+        <input type="text" class="form-control" id="phone" required>
+      </div>
+      <div class="col-12">
+        <label class="form-label"> fizetési mód</label>
+        <select id="payment" class="form-select">
+          <option>Bankkártya (demo)</option>
+          <option>Utánvét (demo)</option>
+        </select>
+      </div>
+        <div id="kupon-checkout-section"></div>
+        ><script>
+        document.addEventListener('DOMContentLoaded', () => {
+    const kuponSection = document.getElementById('kupon-checkout-section');
+
+    if(authService.isAuthenticated() && !authService.isGuest()) {
+        const userKupons = authService.getKupons();
+        const cart = getCart();
+        const total = cartTotal();
+
+        // Get kupons used from cart page (if navigated from there)
+        const kuponsFromCart = localStorage.getItem('cart_kupons_used') || 0;
+
+        kuponSection.innerHTML = `
+        <div class="alert alert-info">
+            <h6><i class="fa-solid fa-ticket"></i> Kupon információ</h6>
+            <p class="mb-2">Elérhető kuponok: <strong>${userKupons}</strong></p>
+            <input type="hidden" id="kupons-used-checkout" value="${kuponsFromCart}">
+            ${kuponsFromCart > 0 ? `<p class="mb-0 text-success">Használt kuponok: ${kuponsFromCart} (${kuponsFromCart}% kedvezmény)</p>` : ''}
+            <p class="mb-0 small text-muted">Minden 500 Ft után 1 kupont kapsz!</p>
+        </div>
+        `;
+    }
+});
+    </script>
+      <div class="col-12 text-end">
+        <button type="submit" class="btn btn-success">Rendelés leadása</button>
+      </div>
+    </form>
+  </div>
+</main>
+
+<footer class="py-4 bg-dark text-light text-center">
+  <div class="container"><p class="mb-0">&copy; 2025 Pretzel's Pretzels</p></div>
+</footer>
+
+<div id="toast-container" class="toast-container position-fixed top-0 end-0 p-3"></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/api.js"></script>
+<script src="js/data.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
