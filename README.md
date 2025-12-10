@@ -7,65 +7,48 @@
 
 ![Pretzel Webshop Banner](src/main/resources/static/assets/img/vegso_logo.png)
 
-**Pretzel Webshop** egy modern, reszponzív online áruház, ahol frissen sült finomságokat, édességeket és egyedi merch termékeket kínálunk.  
-Ez a projekt a HTML, CSS és Bootstrap technológiákat használja, és csapatban is fejleszthető.
+**Pretzel Webshop** egy modern, reszponzív online áruház, ahol frissen sült finomságokat, édességeket és egyedi merch termékeket kínálunk.
 
 ---
 
-## 🌟 Funkciók
-- Reszponzív navigációs sáv és kosár ikon (Bootstrap)
-- Oldalsáv különleges ajánlatokkal és toplistás termékekkel
-- Termékek listázása kártyákban a "Special Offers" szekcióban
-- Rólunk szekció a webshop bemutatására
-- Lábjegyzet a jogi információkkal
+## Funkciók
+- Termékek listázása kártyákban (Péksütemények és ajándéktárgyak)
+- Felhasználó kezelés
+- Kupon rendszer (csak felhasználóknak)
 
 ---
 
-## 🛠️ Technológiák
+## Technológiák
 - **HTML5**
 - **CSS3** (Bootstrap 5.3)
 - **JavaScript** (Bootstrap JS)
 - **Font Awesome** ikonok
+- **Java** Adatbázis
+- **H2** Adatbázis
 
 ---
 
-## 👥 Csapat
-- **Fejlesztő 1:** [Nagy Zoltán, https://github.com/Zoltan16]
-- **Fejlesztő 2:** [Labbancz Klaudia, https://github.com/KlaudiaLabb]
-- **Fejlesztő 3:** [Kósa Bálint, https://github.com/KosaBalint03]
-- **Fejlesztő 4:** [Bodó Máté, https://github.com/bmatehun44]
-
-*(Ide lehet később hozzáadni a szerepköreinket)*
+## Csapat Tagjai
+- **Nagy Zoltán, Frontend** [Nagy Zoltán, https://github.com/Zoltan16]
+- **Labbancz Klaudia, Frontend:** [Labbancz Klaudia, https://github.com/KlaudiaLabb]
+- **Kósa Bálint, Front/Backend, hibajavítás** [Kósa Bálint, https://github.com/KosaBalint03]
+- **Bodó Máté, Tesztelés** [Bodó Máté, https://github.com/bmatehun44]
 
 ---
 
-## 🚀 Telepítés és futtatás
+##  Telepítés és futtatás
 1. Klónozd a projektet a gépedre:
    ```bash
    git clone https://github.com/Zoltan16/pretzel-webshop.git
+   
 2. Nyisd meg a projekt mappáját.
 
-3. Nyisd meg az index.html fájlt a böngésződben.
+3. Nyisd meg az index.html fájlt a böngésződben vagy látogass el a következő weboldalra: https://pretzel-webshop-ujradolgozva.vercel.app/
 
-4. A CSS fájlok a css mappában, a képek az assets/img mappában találhatók.
-
-5. A JavaScript fájlok a js mappában találhatók (main.js).
+4. A projekt mappájában futtasd a backend szervert a következő parancs által: mvn spring-boot:run
 
 ---
 
-## 📌 Jövőbeli bővítések
-Kosár funkció backend integrációval
+## 📝 Licensz
 
-Felhasználói fiókok és bejelentkezés
-
-Több termékkategória és szűrő
-
-Reszponzív design finomhangolása
-
-Minigamek
-
----
-
-## 📝 License
-
-Ez a projekt MIT license alatt áll.
+Ez a projekt MIT licensz alatt áll.
