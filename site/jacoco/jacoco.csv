@@ -1,6 +1,0 @@
-GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
-pretzel_backend,com.pretzel.backend.model,Product,0,63,0,0,0,26,0,14,0,14
-pretzel_backend,com.pretzel.backend.config,DataLoader,0,540,0,2,0,52,0,4,0,3
-pretzel_backend,com.pretzel.backend.controller,ProductController,0,20,0,0,0,6,0,4,0,4
-pretzel_backend,com.pretzel.backend.controller,AuthController,0,197,3,11,0,28,3,8,0,4
-pretzel_backend,com.pretzel.backend,PretzelBackendApplication,0,8,0,0,0,3,0,2,0,2
