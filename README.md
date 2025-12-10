@@ -1,4 +1,4 @@
-# Pretzel Webshop Dev Ág!!
+# Pretzel Webshop Teszt Ág!!
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/Zoltan16/pretzel-webshop?style=for-the-badge)
 ![GitHub repo size](https://img.shields.io/github/repo-size/Zoltan16/pretzel-webshop?style=for-the-badge)
