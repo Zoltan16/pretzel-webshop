@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Köszönjük - Pretzel's Pretzels</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/custom.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+  <div class="container">
+    <a class="navbar-brand" href="index.html"><i class="fa-solid fa-house"></i></a>
+  </div>
+</nav>
+
+<main class="py-5 text-center">
+  <div class="container">
+      <div id=" kupon-earned-seciton"></div>
+
+      <script>
+          document.addEventListener('DOMContentLoaded', () => {
+              const kuponsEarned = localStorage.getItem('last_order_kupons_earned');
+              const section = document.getElementById('kupon-earned-section');
+
+              if(kuponsEarned && parseInt(kuponsEarned) > 0 && !authService.isGuest()) {
+                  section.innerHTML = `
+                  <div class="alert alert-success">
+                      <h5><i class="fa-solid fa-gift"></i> Gratulálunk!</h5>
+                      <p>Kaptál <strong>${kuponsEarned} kupont</strong> ehhez a vásárláshoz!</p>
+                      <p class="mb-0">Új egyenleg: <strong>${authService.getKupons()} kupon</strong></p>
+                  </div>
+                  `;
+
+                  // Clean up
+                  localStorage.removeItem('last_order_kupons_earned');
+              }
+          });
+
+
+      </script>
+    <div class="p-5 bg-white rounded shadow-sm">
+      <h1 class="display-4">Köszönjük a rendelésedet!</h1>
+      <p class="lead">Hamarosan felvesszük veled a kapcsolatot.</p>
+      <a href="index.html" class="btn btn-primary mt-3">Vissza a főoldalra</a>
+    </div>
+  </div>
+</main>
+
+<footer class="py-4 bg-dark text-light text-center">
+  <div class="container"><p class="mb-0">&copy; 2025 Pretzel's Pretzels</p></div>
+</footer>
+</body>
+</html>

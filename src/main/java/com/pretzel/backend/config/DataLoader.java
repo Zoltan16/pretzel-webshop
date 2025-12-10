@@ -66,7 +66,7 @@ public class DataLoader {
                         "Tepertős pogácsa",
                         "pretzel",
                         350,
-                        "assets/img/sajtos-pogacsa.jpg",
+                        "assets/img/tepertos-pogi.jpg",
                         "Friss, ropogós pogácsa."
                 ));
 
@@ -74,7 +74,7 @@ public class DataLoader {
                         "Diós kifli",
                         "dessert",
                         360,
-                        "assets/img/sajtos-pogacsa.jpg",
+                        "assets/img/dios-kifli.jpg",
                         "Friss diós kifli."
                 ));
 
@@ -82,7 +82,7 @@ public class DataLoader {
                         "Mákos kifli",
                         "dessert",
                         360,
-                        "assets/img/makos-pogacsa.jpg",
+                        "assets/img/makos-kifli.jpg",
                         "Frissen sült mákos kifli."
                 ));
 

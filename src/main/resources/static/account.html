@@ -53,7 +53,7 @@
                         </h3>
 
                         <div id="accountInfo">
-                            <!-- Filled by JavaScript -->
+                            <!-- tartalma ide töltődne be.. -->
                         </div>
 
                         <hr>
@@ -74,12 +74,13 @@
 <script src="js/config.js"></script>
 <script src="js/auth.js"></script>
 <script>
-    // Check authentication
+    // ez az egész még most nem használt..
+    // authentikáció ellenörzése
     if(!AUTH.isAuthenticated()){
       window.location.href = 'login.html';
     }
 
-    // Display user info
+    // felhasználói információ megjelenítése
     const user = AUTH.getUser();
     const token = AUTH.getToken();
     const isGuest = AUTH.isGuest();
@@ -114,7 +115,7 @@
       </div>
     `;
 
-    // Display last order if exists
+    // utolsó rendelés megjelenítése, ha volt
     const lastOrderStr = localStorage.getItem('last_order');
     if(lastOrderStr){
       const order = JSON.parse(lastOrderStr);
@@ -135,7 +136,7 @@
       `;
     }
 
-    // Update cart count
+    // kosár tartalmának frisítése
     updateCartCount();
 </script>
 </body>
