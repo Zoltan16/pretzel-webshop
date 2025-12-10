@@ -46,7 +46,9 @@
 
 3. Nyisd meg az index.html fájlt a böngésződben vagy látogass el a következő weboldalra: https://pretzel-webshop-ujradolgozva.vercel.app/
 
-4. A projekt mappájában futtasd a backend szervert a következő parancs által: mvn spring-boot:run
+4. A projekt mappájában futtasd a backend szervert a következő parancs által: 
+   ```bash
+   mvn spring-boot:run
 
 ---
 
