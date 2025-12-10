@@ -23,7 +23,8 @@
 - **CSS3** (Bootstrap 5.3)
 - **JavaScript** (Bootstrap JS)
 - **Font Awesome** ikonok
-- **Java** Adatbázis
+- **Springboot** Backend keretrendszer
+- **Java** Backend
 - **H2** Adatbázis
 
 ---
