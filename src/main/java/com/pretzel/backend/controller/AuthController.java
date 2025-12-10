@@ -24,11 +24,11 @@ public class AuthController {
         String email = body.get("email");
         String password = body.get("password");
         if(email == null || password == null || email.isEmpty() || password.isEmpty()) {
-            return ResponseEntity.badRequest().body(Map.of("success", false, "message", "Missing fields"));
+            return ResponseEntity.badRequest().body(Map.of("success", false, "message", "Hiányos mezők!"));
         }
         if(userRepository.existsByEmail(email))
         {
-            return ResponseEntity.ok(Map.of("success", false, "message", "User already exists"));
+            return ResponseEntity.ok(Map.of("success", false, "message", "Adott felhasználó már létezik!"));
         }
 
         User user = new User(email, password, false); // Plain text-es tarolas!!
@@ -48,10 +48,10 @@ public class AuthController {
         String email = body.get("email");
         String password = body.get("password");
 
-        if(email == null || password == null) return ResponseEntity.badRequest().body(Map.of("success",false,"message","Missing fields"));
+        if(email == null || password == null) return ResponseEntity.badRequest().body(Map.of("success",false,"message","Hiányos mezők!"));
         Optional<User> userOpt = userRepository.findByEmail(email);
         if(userOpt.isEmpty() || !userOpt.get().getPassword().equals(password)) {
-            return ResponseEntity.ok(Map.of("success", false, "message", "Invalid credentials"));
+            return ResponseEntity.ok(Map.of("success", false, "message", "Hibás felhasználói adatok!"));
         }
         User user = userOpt.get();
         String token = UUID.randomUUID().toString();
@@ -79,14 +79,14 @@ public class AuthController {
     @GetMapping("/validate")
     public ResponseEntity<?> validateToken(@RequestHeader(value = "Authorization", required = false) String authHeader) {
         if(authHeader == null || !authHeader.startsWith("Bearer ")) {
-            return ResponseEntity.ok(Map.of("success", false, "message", "No token provided"));
+            return ResponseEntity.ok(Map.of("success", false, "message", "Nincs Token!"));
         }
 
         String token = authHeader.substring(7);
         User user = activeTokens.get(token);
 
         if(user == null) {
-            return ResponseEntity.ok(Map.of("success", false, "message", "Invalid token"));
+            return ResponseEntity.ok(Map.of("success", false, "message", "Helytelen token!"));
         }
 
         return ResponseEntity.ok(Map.of("success", true, "user", Map.of("id", user.getId(), "email", user.getEmail(), "isGuest", user.isGuest(), "kupons", user.getKupons())

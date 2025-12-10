@@ -1,14 +1,12 @@
-// auth.js - Place this in your frontend project
 
-
-// Authentication Service
+// auth service.
 class AuthService {
     constructor() {
         this.token = localStorage.getItem('token');
         this.user = JSON.parse(localStorage.getItem('user'));
     }
 
-    // Register new user
+    // Uj felhasználó regisztrálása
     async register(email, password) {
         try {
             const response = await fetch(`${API_BASE_URL}/register`, {
@@ -28,12 +26,12 @@ class AuthService {
                 return { success: false, message: data.message };
             }
         } catch (error) {
-            console.error('Registration error:', error);
-            return { success: false, message: 'Registration failed. Please try again.' };
+            console.error('Regisztrációs hiba:', error);
+            return { success: false, message: 'Regisztráció sikertelen!' };
         }
     }
 
-    // Login existing user
+    // felhasználó beléptetése
     async login(email, password) {
         try {
             const response = await fetch(`${API_BASE_URL}/login`, {
@@ -58,7 +56,7 @@ class AuthService {
         }
     }
 
-    // Guest login
+    // Vendég belépés
     async guestLogin() {
         try {
             const response = await fetch(`${API_BASE_URL}/guest`, {
@@ -77,12 +75,12 @@ class AuthService {
                 return { success: false, message: data.message };
             }
         } catch (error) {
-            console.error('Guest login error:', error);
-            return { success: false, message: 'Guest login failed. Please try again.' };
+            console.error('Vendég belépés hiba:', error);
+            return { success: false, message: 'Vendég belépés sikertelen!' };
         }
     }
 
-    // Save authentication data
+    // hitelesítési adat mentése
     saveAuthData(token, user) {
         this.token = token;
         this.user = user;
@@ -90,7 +88,7 @@ class AuthService {
         localStorage.setItem('user', JSON.stringify(user));
     }
 
-    // Logout
+    // kilépés
     logout() {
         this.token = null;
         this.user = null;
@@ -98,22 +96,22 @@ class AuthService {
         localStorage.removeItem('user');
     }
 
-    // Check if user is logged in
+    // belépés ellenörzés
     isAuthenticated() {
         return !!this.token;
     }
 
-    // Get current user
+    // jelenlegi felhasználó lekérésée
     getCurrentUser() {
         return this.user;
     }
 
-    // Get token for API requests
+    // token kérése
     getToken() {
         return this.token;
     }
 
-    // Make authenticated API requests
+    // API kérés küldése
     async fetchWithAuth(url, options = {}) {
         const headers = {
             'Content-Type': 'application/json',
@@ -130,17 +128,17 @@ class AuthService {
         });
     }
 
-// Check if user is guest
+// vendég ellenörzés
     isGuest() {
         return this.user && this.user.isGuest === true;
     }
 
-    // Get user email
+    // email kérése
     getUserEmail() {
         return this.user ? this.user.email : null;
     }
 
-    // Update navbar with user info (call this on every page)
+    // navbar frissítése
     updateNavbar() {
         const navbar = document.querySelector('.navbar .container');
         if (!navbar) return;
@@ -155,7 +153,7 @@ class AuthService {
             const user = this.user;
             const isGuest = this.isGuest();
 
-            // Create user section
+            // felhasználó szekció....
             const userSection = document.createElement('div');
             userSection.className = 'user-section d-flex align-items-center gap-2 me-2';
 
@@ -171,7 +169,7 @@ class AuthService {
                 </button>
             `;
 
-            // Insert before cart button
+
             const cartBtn = navbar.querySelector('.btn-outline-dark');
             if (cartBtn) {
                 cartBtn.parentElement.insertBefore(userSection, cartBtn);
@@ -179,7 +177,7 @@ class AuthService {
                 navbar.appendChild(userSection);
             }
         } else {
-            // Show login button if not authenticated
+
             const userSection = document.createElement('div');
             userSection.className = 'user-section me-2';
 
@@ -189,7 +187,7 @@ class AuthService {
                 </a>
             `;
 
-            // Insert before cart button
+
             const cartBtn = navbar.querySelector('.btn-outline-dark');
             if (cartBtn) {
                 cartBtn.parentElement.insertBefore(userSection, cartBtn);
@@ -199,7 +197,7 @@ class AuthService {
         }
     }
 
-    // Require authentication (useful for checkout page)
+    // hitelesítés kérése
     requireAuth(redirectUrl = 'checkout.html') {
         if (!this.isAuthenticated()) {
             if (confirm('A vásárláshoz bejelentkezés szükséges. Szeretnél bejelentkezni?')) {
@@ -211,17 +209,16 @@ class AuthService {
         return true;
     }
 
-    // Handle redirect after login
+    // átíránytás kezelése
     handleLoginRedirect() {
         const redirect = localStorage.getItem('redirect_after_login');
         if (redirect) {
             localStorage.removeItem('redirect_after_login');
             return redirect;
         }
-        return 'index.html'; // default
+        return 'index.html';
     }
 }
 
-// Export singleton instance
 const authService = new AuthService();
 window.authService = authService;
