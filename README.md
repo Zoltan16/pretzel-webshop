@@ -13,6 +13,7 @@
 
 ## Funkciók
 - Termékek listázása kártyákban (Péksütemények és ajándéktárgyak)
+- Kosár és kassza rendszer
 - Felhasználó kezelés
 - Kupon rendszer (csak felhasználóknak)
 
