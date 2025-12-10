@@ -25,7 +25,7 @@
 - **JavaScript** (Bootstrap JS)
 - **Font Awesome** ikonok
 - **Springboot** Backend keretrendszer
-- **Java** Backend
+- **Java 21** Backend
 - **H2** Adatbázis
 
 ---
