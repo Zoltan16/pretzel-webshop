@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 public class DataLoader {
 
     @Bean
-    CommandLineRunner initDatabase(ProductRepository productRepository) {
+    public CommandLineRunner initDatabase(ProductRepository productRepository) {
         return args -> {
             // ha nincs adat, töltsünk mintákat
             if (productRepository.count() == 0) {
