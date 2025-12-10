@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="hu"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Product.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">pretzel_backend</a> &gt; <a href="index.source.html" class="el_package">com.pretzel.backend.model</a> &gt; <span class="el_source">Product.java</span></div><h1>Product.java</h1><pre class="source lang-java linenums">package com.pretzel.backend.model;
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = &quot;products&quot;)
+
+public class Product {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String name;
+    private String type;
+    private double price;
+    private String imageUrl;
+
+    @Column(length = 1000)
+    private String description;
+
+<span class="fc" id="L22">    public Product() {}</span>
+
+    // Konstruktor, amelyet a DataLoader használ (5 paraméter)
+<span class="fc" id="L25">    public Product(String name, String type, double price, String imageUrl, String description) {</span>
+<span class="fc" id="L26">        this.name = name;</span>
+<span class="fc" id="L27">        this.type = type;</span>
+<span class="fc" id="L28">        this.price = price;</span>
+<span class="fc" id="L29">        this.imageUrl = imageUrl;</span>
+<span class="fc" id="L30">        this.description = description;</span>
+<span class="fc" id="L31">    }</span>
+
+    // Getterek és setterek
+
+    public Long getId() {
+<span class="fc" id="L36">        return id;</span>
+    }
+
+    public void setId(Long id) {
+<span class="fc" id="L40">        this.id = id;</span>
+<span class="fc" id="L41">    }</span>
+
+    public String getName() {
+<span class="fc" id="L44">        return name;</span>
+    }
+
+    public void setName(String name) {
+<span class="fc" id="L48">        this.name = name;</span>
+<span class="fc" id="L49">    }</span>
+
+    public String getType() {
+<span class="fc" id="L52">        return type;</span>
+    }
+
+    public void setType(String type) {
+<span class="fc" id="L56">        this.type = type;</span>
+<span class="fc" id="L57">    }</span>
+
+    public double getPrice() {
+<span class="fc" id="L60">        return price;</span>
+    }
+
+    public void setPrice(double price) {
+<span class="fc" id="L64">        this.price = price;</span>
+<span class="fc" id="L65">    }</span>
+
+    public String getImageUrl() {
+<span class="fc" id="L68">        return imageUrl;</span>
+    }
+
+    public void setImageUrl(String imageUrl) {
+<span class="fc" id="L72">        this.imageUrl = imageUrl;</span>
+<span class="fc" id="L73">    }</span>
+
+    public String getDescription() {
+<span class="fc" id="L76">        return description;</span>
+    }
+
+    public void setDescription(String description) {
+<span class="fc" id="L80">        this.description = description;</span>
+<span class="fc" id="L81">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
