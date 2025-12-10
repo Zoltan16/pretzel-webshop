@@ -29,14 +29,14 @@
 ---
 
 ## Csapat Tagjai
-- **Nagy Zoltán, Frontend** [Nagy Zoltán, https://github.com/Zoltan16]
-- **Labbancz Klaudia, Frontend:** [Labbancz Klaudia, https://github.com/KlaudiaLabb]
-- **Kósa Bálint, Front/Backend, hibajavítás** [Kósa Bálint, https://github.com/KosaBalint03]
-- **Bodó Máté, Tesztelés** [Bodó Máté, https://github.com/bmatehun44]
+- **Nagy Zoltán, Frontend** [Github: https://github.com/Zoltan16]
+- **Labbancz Klaudia, Frontend:** [Github: https://github.com/KlaudiaLabb]
+- **Kósa Bálint, Front/Backend, hibajavítás** [Github: https://github.com/KosaBalint03]
+- **Bodó Máté, Tesztelés** [Github: https://github.com/bmatehun44]
 
 ---
 
-##  Telepítés és futtatás
+##  Futtatás
 1. Klónozd a projektet a gépedre:
    ```bash
    git clone https://github.com/Zoltan16/pretzel-webshop.git
