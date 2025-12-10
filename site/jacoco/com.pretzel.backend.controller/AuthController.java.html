@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="hu"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AuthController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">pretzel_backend</a> &gt; <a href="index.source.html" class="el_package">com.pretzel.backend.controller</a> &gt; <span class="el_source">AuthController.java</span></div><h1>AuthController.java</h1><pre class="source lang-java linenums">package com.pretzel.backend.controller;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.*;
+
+@RestController
+@RequestMapping(&quot;/api/auth&quot;)
+@CrossOrigin(origins = &quot;*&quot;)
+<span class="fc" id="L11">public class AuthController {</span>
+
+    // simple in-memory user store for dev only
+<span class="fc" id="L14">    private final Map&lt;String, Map&lt;String,Object&gt;&gt; users = new HashMap&lt;&gt;();</span>
+
+    // register
+    @PostMapping(&quot;/register&quot;)
+    public ResponseEntity&lt;?&gt; register(@RequestBody Map&lt;String,String&gt; body) {
+<span class="fc" id="L19">        String email = body.get(&quot;email&quot;);</span>
+<span class="fc" id="L20">        String password = body.get(&quot;password&quot;);</span>
+<span class="pc bpc" id="L21" title="1 of 4 branches missed.">        if(email == null || password == null) return ResponseEntity.badRequest().body(Map.of(&quot;success&quot;,false,&quot;message&quot;,&quot;Missing fields&quot;));</span>
+<span class="fc bfc" id="L22" title="All 2 branches covered.">        if(users.containsKey(email)) return ResponseEntity.ok(Map.of(&quot;success&quot;, false, &quot;message&quot;, &quot;User already exists&quot;));</span>
+<span class="fc" id="L23">        Map&lt;String,Object&gt; u = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L24">        u.put(&quot;email&quot;, email);</span>
+<span class="fc" id="L25">        u.put(&quot;password&quot;, password); // WARNING: plain text, dev only</span>
+<span class="fc" id="L26">        u.put(&quot;isGuest&quot;, false);</span>
+<span class="fc" id="L27">        users.put(email, u);</span>
+<span class="fc" id="L28">        String token = UUID.randomUUID().toString();</span>
+<span class="fc" id="L29">        return ResponseEntity.ok(Map.of(&quot;success&quot;, true, &quot;token&quot;, token, &quot;user&quot;, Map.of(&quot;email&quot;, email, &quot;isGuest&quot;, false)));</span>
+    }
+
+    // login
+    @PostMapping(&quot;/login&quot;)
+    public ResponseEntity&lt;?&gt; login(@RequestBody Map&lt;String,String&gt; body) {
+<span class="fc" id="L35">        String email = body.get(&quot;email&quot;);</span>
+<span class="fc" id="L36">        String password = body.get(&quot;password&quot;);</span>
+<span class="pc bpc" id="L37" title="1 of 4 branches missed.">        if(email == null || password == null) return ResponseEntity.badRequest().body(Map.of(&quot;success&quot;,false,&quot;message&quot;,&quot;Missing fields&quot;));</span>
+<span class="fc" id="L38">        Map&lt;String,Object&gt; u = users.get(email);</span>
+<span class="pc bpc" id="L39" title="1 of 4 branches missed.">        if(u == null || !Objects.equals(u.get(&quot;password&quot;), password)) {</span>
+<span class="fc" id="L40">            return ResponseEntity.ok(Map.of(&quot;success&quot;, false, &quot;message&quot;, &quot;Invalid credentials&quot;));</span>
+        }
+<span class="fc" id="L42">        String token = UUID.randomUUID().toString();</span>
+<span class="fc" id="L43">        return ResponseEntity.ok(Map.of(&quot;success&quot;, true, &quot;token&quot;, token, &quot;user&quot;, Map.of(&quot;email&quot;, email, &quot;isGuest&quot;, false)));</span>
+    }
+
+    // guest
+    @PostMapping(&quot;/guest&quot;)
+    public ResponseEntity&lt;?&gt; guest() {
+<span class="fc" id="L49">        String guestEmail = &quot;guest_&quot; + UUID.randomUUID().toString().substring(0,8) + &quot;@pretzel.local&quot;;</span>
+<span class="fc" id="L50">        Map&lt;String,Object&gt; u = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L51">        u.put(&quot;email&quot;, guestEmail);</span>
+<span class="fc" id="L52">        u.put(&quot;isGuest&quot;, true);</span>
+<span class="fc" id="L53">        String token = UUID.randomUUID().toString();</span>
+        // store guest for session (optional)
+<span class="fc" id="L55">        users.put(guestEmail, u);</span>
+<span class="fc" id="L56">        return ResponseEntity.ok(Map.of(&quot;success&quot;, true, &quot;token&quot;, token, &quot;user&quot;, Map.of(&quot;email&quot;, guestEmail, &quot;isGuest&quot;, true)));</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
