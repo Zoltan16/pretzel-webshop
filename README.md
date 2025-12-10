@@ -49,6 +49,6 @@
 
 ---
 
-## 📝 Licensz
+## Licensz
 
 Ez a projekt MIT licensz alatt áll.
