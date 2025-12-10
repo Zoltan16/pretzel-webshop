@@ -1,6 +1,5 @@
-// cart.js - handles cart in localStorage
-// Biztonságos globális fallback: ha már van CART_KEY, ne deklaráljuk újra
-window.CART_KEY = window.CART_KEY || 'pretzel_cart_v1';
+//ha már van CART_KEY, ne deklaráljuk újra
+window.CART_KEY = window.CART_KEY || 'kosár';
 
 function getCart(){
     const raw = localStorage.getItem(window.CART_KEY);
@@ -42,28 +41,22 @@ function cartTotal(){
     return cartItemsDetailed().reduce((s,it)=>s + (it.price * it.qty), 0);
 }
 
-// Get kupons to use (from input)
+// használni kívánt kuponok számának kivétele
 function getKuponsToUse() {
     const kuponInput = document.getElementById('kupons-to-use');
     if(!kuponInput) return 0;
     const value = parseInt(kuponInput.value) || 0;
-    return Math.max(0, Math.min(value, 50)); // Between 0 and 50
+    return Math.max(0, Math.min(value, 50)); // 0 és 50 közötti mennyiségű kupont használhatunk egy vásárlás során
 }
 
 
-// Calculate total with kupon discount
-//function cartTotalWithKupons() {
-//    const originalTotal = cartTotal();
-//    const kuponsUsed = getKuponsToUse();
-//    const discount = originalTotal * (kuponsUsed / 100.0);
-//    return originalTotal - discount;
-//}
 
-// NEW: Update cart display with kupon discount
+
+// Kosárban megadjuk a kuponos árt is majd itt, de a kosarat frisítjük itt
 function updateCartTotals() {
     const originalTotal = cartTotal();
     const kuponsUsed = getKuponsToUse();
-    const discount = originalTotal * (kuponsUsed / 100.0);
+    const discount = originalTotal * (kuponsUsed / 100.0); // 1 kupon-->1% kedvezmény
     const finalTotal = originalTotal - discount;
 
     const cartTotalEl = document.getElementById('cart-total');
@@ -90,7 +83,7 @@ function updateCartCount(){
     const count = getCart().reduce((s,i)=>s+i.qty,0);
     document.querySelectorAll('#cart-count').forEach(el=>el.textContent = count);
 }
-// toast per type
+
 function showProductToast(product){
     const icons = { pretzel: '🥨', dessert: '🧁', merch: '🎁' };
     const icon = icons[product.type] || '🛒';
@@ -108,7 +101,7 @@ function showToast(message){
     setTimeout(()=>{ toast.classList.add('hide'); toast.style.opacity=0; setTimeout(()=>toast.remove(),400); }, 3000);
 }
 
-// Utility for pages to render cart or products
+// termékek és kosár rendelését kezelő rész
 function renderProducts(selector, filterFn){
     const el = document.getElementById(selector);
     if(!el) return;
@@ -167,8 +160,8 @@ const isRegistered = authService.isAuthenticated() && !authService.isGuest();
                 <h5 class="card-title">
                     <i class="fa-solid fa-ticket"></i> Kupon használat
                 </h5>
-                <p class="text-muted">Rendelkezésre álló kuponok: <strong>${userKupons}</strong></p>
-                <p class="text-muted small">Minden kupon 1% kedvezményt ad. Maximum 50 kupon használható.</p>
+                <p class="text-muted">Rendelkezésre álló kuponok száma: <strong>${userKupons}</strong></p>
+                <p class="text-muted small">Minden kupon 1% kedvezményt jelent. Minden vásárlás során maximum 50 kupon használható.</p>
                 <div class="input-group" style="max-width: 300px;">
                     <input type="number"
                            id="kupons-to-use"
@@ -186,7 +179,7 @@ const isRegistered = authService.isAuthenticated() && !authService.isGuest();
 
     el.innerHTML = html;
 
-    // attach handlers
+    // handlerek hozzáadása
     el.querySelectorAll('.remove-btn').forEach(b=>b.addEventListener('click', e=>{ removeFromCart(e.currentTarget.dataset.id); renderCartTable(containerId); }));
     el.querySelectorAll('.qty-input').forEach(inp=> inp.addEventListener('change', e=>{ updateQty(e.currentTarget.dataset.id, parseInt(e.currentTarget.value)||1); renderCartTable(containerId); }));
 
@@ -204,7 +197,7 @@ const applyBtn = document.getElementById('apply-kupons');
         });
     }
 
-    // Initialize totals
+    // kosár totál frisítése
     updateCartTotals();
 }
 
