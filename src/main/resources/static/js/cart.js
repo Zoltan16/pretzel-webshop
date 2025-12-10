@@ -1,5 +1,5 @@
 //ha már van CART_KEY, ne deklaráljuk újra
-window.CART_KEY = window.CART_KEY || 'pretzel_cart_v1';
+window.CART_KEY = window.CART_KEY || 'kosár';
 
 function getCart(){
     const raw = localStorage.getItem(window.CART_KEY);

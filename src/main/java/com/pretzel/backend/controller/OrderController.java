@@ -37,14 +37,14 @@ public class OrderController {
 
         // hitelesítés ellenörzése
         if(authHeader == null || !authHeader.startsWith("Bearer ")) {
-            return ResponseEntity.status(401).body(Map.of("success", false, "message", "Authentication required"));
+            return ResponseEntity.status(401).body(Map.of("success", false, "message", "Hitelesítés szükséges!"));
         }
 
         String token = authHeader.substring(7);
         User user = authController.getUserFromToken(token);
 
         if(user == null) {
-            return ResponseEntity.status(401).body(Map.of("success", false, "message", "Invalid token"));
+            return ResponseEntity.status(401).body(Map.of("success", false, "message", "Helytelen token!"));
         }
 
 
@@ -60,13 +60,13 @@ public class OrderController {
                 }
             }
             if (kuponsToUse > 50) {
-                return ResponseEntity.badRequest().body(Map.of("success", false, "message", "Maximum 50 kupons can be used per order"));
+                return ResponseEntity.badRequest().body(Map.of("success", false, "message", "Maximum 50 kupont tudsz egy vásárlás során használni!"));
             }
             if (!user.isGuest() && kuponsToUse > user.getKupons()) {
-                return ResponseEntity.badRequest().body(Map.of("success", false, "message", "Not enough kupons. You have: " + user.getKupons()));
+                return ResponseEntity.badRequest().body(Map.of("success", false, "message", "Nincs elég kuponod! Összesen " + user.getKupons()+ "kuponod van!"));
             }
             if(user.isGuest() && kuponsToUse > 0) {
-                return ResponseEntity.badRequest().body(Map.of("success", false, "message", "Guest users cannot use kupons"));
+                return ResponseEntity.badRequest().body(Map.of("success", false, "message", "Vendég felhasználók nem használhatnak kuponokat!"));
             }
 
             // Rendelés tényleges létrehozása
@@ -84,7 +84,7 @@ public class OrderController {
             List<Map<String, Object>> cartItems = (List<Map<String, Object>>) orderData.get("cart");
 
             if(cartItems == null || cartItems.isEmpty()) {
-                return ResponseEntity.badRequest().body(Map.of("success", false, "message", "Cart is empty"));
+                return ResponseEntity.badRequest().body(Map.of("success", false, "message", "A kosarad üres!"));
             }
 
             double subtotal = 0;
@@ -118,7 +118,7 @@ public class OrderController {
                         order.addItem(orderItem);
                         subtotal += orderItem.getSubtotal();
                     } else {
-                        System.err.println("Hibás termék nem találhatü: " + item);
+                        System.err.println("Hibás termék nem található: " + item);
                     }
                 } catch (Exception e) {
                     System.err.println("A következő kosár elemet nem sikerült feldolgozni: " + item);
@@ -127,7 +127,7 @@ public class OrderController {
             }
             if (order.getItems().isEmpty())
             {
-                return ResponseEntity.badRequest().body(Map.of("success", false, "message", "No valid items in cart"));
+                return ResponseEntity.badRequest().body(Map.of("success", false, "message", "Nincs érvényes termék a  kosárban!"));
             }
 
             order.setOriginalAmount(subtotal);
@@ -152,12 +152,12 @@ public class OrderController {
             System.out.println("Használt kuponok száma: " + kuponsToUse + " Kapott kuponok száma: " + kuponsEarned);
             System.out.println("Felhasználó új kuponegyenlege: " + user.getKupons());
 
-            return ResponseEntity.ok(Map.of("success", true, "orderId", order.getId(), "message", "Order placed successfully", "kuponsUsed", kuponsToUse, "newKuponBalance", user.getKupons(), "discount", discount, "finalTotal", finalTotal
+            return ResponseEntity.ok(Map.of("success", true, "orderId", order.getId(), "message", "Rendelés sikeresen létrehozva!", "kuponsUsed", kuponsToUse, "newKuponBalance", user.getKupons(), "kuponsEarned", kuponsEarned, "discount", discount, "finalTotal", finalTotal
             ));
 
         } catch (Exception e) {
             e.printStackTrace();
-            return ResponseEntity.status(500).body(Map.of("success", false, "message", "Failed to create order: " + e.getMessage()
+            return ResponseEntity.status(500).body(Map.of("success", false, "message", "Rendelés létrehozása sikertelen: " + e.getMessage()
             ));
         }
     }
@@ -166,14 +166,14 @@ public class OrderController {
     @GetMapping("/my-orders")
     public ResponseEntity<?> getMyOrders(@RequestHeader(value = "Authorization", required = false) String authHeader) {
         if(authHeader == null || !authHeader.startsWith("Bearer ")) {
-            return ResponseEntity.status(401).body(Map.of("success", false, "message", "Authentication required"));
+            return ResponseEntity.status(401).body(Map.of("success", false, "message", "Hitelesítés szükséges!"));
         }
 
         String token = authHeader.substring(7);
         User user = authController.getUserFromToken(token);
 
         if(user == null) {
-            return ResponseEntity.status(401).body(Map.of("success", false, "message", "Invalid token"));
+            return ResponseEntity.status(401).body(Map.of("success", false, "message", "Helytelen token!"));
         }
 
         List<Order> orders = orderRepository.findByUserOrderByCreatedAtDesc(user);
@@ -201,26 +201,26 @@ public class OrderController {
             @RequestHeader(value = "Authorization", required = false) String authHeader) {
 
         if(authHeader == null || !authHeader.startsWith("Bearer ")) {
-            return ResponseEntity.status(401).body(Map.of("success", false, "message", "Authentication required"));
+            return ResponseEntity.status(401).body(Map.of("success", false, "message", "Hitelesítés szükséges!"));
         }
 
         String token = authHeader.substring(7);
         User user = authController.getUserFromToken(token);
 
         if(user == null) {
-            return ResponseEntity.status(401).body(Map.of("success", false, "message", "Invalid token"));
+            return ResponseEntity.status(401).body(Map.of("success", false, "message", "Helytelen token!"));
         }
 
         Optional<Order> orderOpt = orderRepository.findById(id);
         if(orderOpt.isEmpty()) {
-            return ResponseEntity.status(404).body(Map.of("success", false, "message", "Order not found"));
+            return ResponseEntity.status(404).body(Map.of("success", false, "message", "Rendelés nem található!  "));
         }
 
         Order order = orderOpt.get();
 
         // A rendelés felhasználóhoz való tartozásának vizsgálata
         if(!order.getUser().getId().equals(user.getId())) {
-            return ResponseEntity.status(403).body(Map.of("success", false, "message", "Access denied"));
+            return ResponseEntity.status(403).body(Map.of("success", false, "message", "Hozzáférés megtagadva!"));
         }
 
         // Adatok kiadása a megrendelésről
